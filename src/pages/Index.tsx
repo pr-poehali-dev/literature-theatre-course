@@ -94,23 +94,42 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
           style={{
-            backgroundImage: 'url("/img/709fbb42-4750-4e49-b862-9a01ff979b60.jpg")'
+            backgroundImage: 'url("/img/8e830cfa-af16-481c-8aee-6dc3a2218268.jpg")'
           }}
         ></div>
         
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-32 h-32 border-2 border-accent rotate-45"></div>
-          <div className="absolute top-40 right-32 w-24 h-24 border-2 border-primary rotate-12"></div>
-          <div className="absolute bottom-32 left-1/4 w-16 h-16 border-2 border-secondary rounded-full"></div>
-          <div className="absolute bottom-20 right-20 w-28 h-28 border-2 border-accent rotate-45"></div>
+        {/* Surreal Elements */}
+        <div className="absolute inset-0 opacity-20">
+          {/* Dotted connecting lines */}
+          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="10" cy="10" r="2" fill="currentColor" className="text-accent" opacity="0.3"/>
+              </pattern>
+            </defs>
+            <path d="M 100 200 Q 300 100 500 300 T 800 200" stroke="currentColor" strokeWidth="2" 
+                  strokeDasharray="10,5" fill="none" className="text-accent" opacity="0.6"/>
+            <path d="M 200 600 Q 400 400 600 700 T 900 600" stroke="currentColor" strokeWidth="2" 
+                  strokeDasharray="15,8" fill="none" className="text-primary" opacity="0.5"/>
+          </svg>
+          
+          {/* Floating elements */}
+          <div className="absolute top-20 left-20 w-24 h-24 opacity-30 animate-pulse">
+            <Icon name="Cloud" size={48} className="text-accent" />
+          </div>
+          <div className="absolute top-1/3 right-32 w-16 h-16 opacity-40 animate-bounce">
+            <Icon name="Star" size={32} className="text-primary" />
+          </div>
+          <div className="absolute bottom-1/3 left-1/4 w-20 h-20 opacity-35">
+            <Icon name="Music" size={40} className="text-accent rotate-12" />
+          </div>
         </div>
         
         <div className="container mx-auto px-6 text-center z-10">
@@ -119,50 +138,106 @@ const Index = () => {
               <Icon name="Drama" size={80} className="mx-auto mb-6 text-accent" />
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-              ИСТОРИКО-
+            <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 tracking-tight relative">
+              <span className="relative inline-block">
+                ИСТОРИКО-
+                <div className="absolute -top-8 -right-12 opacity-60">
+                  <Icon name="Feather" size={32} className="text-accent rotate-45" />
+                </div>
+              </span>
               <br />
-              <span className="text-accent">ЛИТЕРАТУРНЫЙ</span>
+              <span className="text-accent relative">
+                ЛИТЕРАТУРНЫЙ
+                <svg className="absolute -bottom-2 left-0 w-full h-2" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 0 1 Q 150 0 300 1 T 600 1" stroke="currentColor" strokeWidth="3" 
+                        strokeDasharray="8,4" fill="none" className="text-primary" opacity="0.7"/>
+                </svg>
+              </span>
               <br />
-              ТЕАТР 13+
+              <span className="relative">
+                ТЕАТР 13+
+                <div className="absolute -bottom-6 -left-8 opacity-50">
+                  <Icon name="Drama" size={28} className="text-primary" />
+                </div>
+              </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Авторский курс в Барселоне, где творчество размывает границу с образованием
-            </p>
+            <div className="relative mb-8">
+              <p className="text-xl md:text-2xl text-accent mb-8 max-w-3xl mx-auto leading-relaxed relative">
+                Авторский курс в Барселоне, где творчество размывает границу с образованием
+                <div className="absolute -right-16 top-0 opacity-40">
+                  <Icon name="Palette" size={24} className="text-primary animate-pulse" />
+                </div>
+              </p>
+              
+              {/* Decorative text elements */}
+              <div className="absolute -left-32 top-8 text-sm text-accent opacity-60 rotate-12 hidden lg:block">
+                ✨ Фантазийная анархия
+              </div>
+              <div className="absolute -right-40 -top-4 text-sm text-primary opacity-50 -rotate-6 hidden lg:block">
+                🎭 Творческие эксперименты
+              </div>
+            </div>
             
-            <Button 
-              size="lg" 
-              className="text-lg px-12 py-6 bg-accent hover:bg-accent/90 text-black font-bold rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-accent/50"
-            >
-              ЗАПИСАТЬСЯ НА КУРС
-              <Icon name="ArrowRight" size={20} className="ml-2" />
-            </Button>
+            <div className="relative inline-block">
+              <Button 
+                size="lg" 
+                className="text-lg px-12 py-6 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/50 relative z-10"
+              >
+                ЗАПИСАТЬСЯ НА КУРС
+                <Icon name="ArrowRight" size={20} className="ml-2" />
+              </Button>
+              
+              {/* Decorative elements around button */}
+              <div className="absolute -top-4 -left-8 opacity-30">
+                <Icon name="Sparkles" size={20} className="text-accent animate-pulse" />
+              </div>
+              <div className="absolute -bottom-4 -right-6 opacity-40">
+                <Icon name="Heart" size={16} className="text-primary animate-bounce" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Target Audience Section */}
-      <section className="py-20 bg-slate-800/50">
+      <section className="py-20 bg-card relative overflow-hidden">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            ДЛЯ КОГО ЭТОТ КУРС
-          </h2>
+          <div className="relative mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-4">
+              ДЛЯ КОГО ЭТОТ КУРС
+            </h2>
+            
+            {/* Decorative elements */}
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-30">
+              <Icon name="Users" size={32} className="text-accent" />
+            </div>
+            
+            <svg className="absolute top-16 left-1/2 transform -translate-x-1/2 w-32 h-2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 0 1 Q 64 0 128 1" stroke="currentColor" strokeWidth="2" 
+                    strokeDasharray="6,3" fill="none" className="text-primary" opacity="0.6"/>
+            </svg>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {targetAudience.map((item, index) => (
               <Card 
                 key={index} 
-                className="bg-slate-700/50 border-slate-600 hover:bg-slate-700/70 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/20"
+                className="bg-card border-border hover:bg-accent/10 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 relative overflow-hidden group"
               >
                 <CardHeader className="text-center">
-                  <Icon name={item.icon} size={48} className="mx-auto mb-4 text-accent" />
-                  <CardTitle className="text-white text-lg leading-tight">
+                  <div className="relative">
+                    <Icon name={item.icon} size={48} className="mx-auto mb-4 text-primary group-hover:text-accent transition-colors duration-300" />
+                    
+                    {/* Floating decorative dot */}
+                    <div className="absolute -top-2 -right-2 w-3 h-3 bg-accent rounded-full opacity-40 group-hover:opacity-70 transition-opacity duration-300"></div>
+                  </div>
+                  <CardTitle className="text-foreground text-lg leading-tight group-hover:text-accent transition-colors duration-300">
                     {item.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-slate-300 text-center">
+                  <CardDescription className="text-muted-foreground text-center">
                     {item.description}
                   </CardDescription>
                 </CardContent>
